@@ -45,3 +45,23 @@ unlink_emacs:
 	@ for path in $(PATHES); do \
 		rm -fv $(HOME)/$(DIR)/$$path; \
 	done
+
+#
+# tig
+#
+
+PATHES := .tigrc
+DIR    := .
+
+.PHONY: link_tig unlink_tig
+link_tig:
+	@echo Starting link tig
+	@ for path in $(PATHES); do \
+		ln -sfnv $(PWD)/$(DIR)/$$path $(HOME)/$(DIR)/$$path; \
+	done
+
+unlink_tig:
+	@ echo Starting unlink tig
+	@ for path in $(PATHES); do \
+		rm -fv $(HOME)/$(DIR)/$$path; \
+	done
