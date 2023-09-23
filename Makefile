@@ -2,66 +2,70 @@
 
 all: link
 
-link: link_emacs link_zsh
+link: link_emacs link_zsh link_tig link_dot_config
 
-unlink: unlink_emacs unlink_zsh
+unlink: unlink_emacs unlink_zsh unlink_tig unlink_dot_config
 
 #
 # Emacs
 #
 
-PATHES := init.el early-init.el
-DIR    := .emacs.d
-
 .PHONY: link_emacs unlink_emacs
 link_emacs:
 	@ echo Staring link .emacs.d
-	@ for path in $(PATHES); do \
-		ln -sfnv $(PWD)/$(DIR)/$$path $(HOME)/$(DIR)/$$path; \
-	done
+	@ ln -sfnv $(PWD)/.emacs.d/init.el       $(HOME)/.emacs.d/init.el
+	@ ln -sfnv $(PWD)/.emacs.d/early-init.el $(HOME)/.emacs.d/early-init.el
 
 unlink_emacs:
 	@ echo Starting unlink .emacs.d
-	@ for path in $(PATHES); do \
-		rm -fv $(HOME)/$(DIR)/$$path; \
-	done
+	@ rm -rfv $(HOME)/.emacs.d/init.el
+	@ rm -rfv $(HOME)/.emacs.d/early-init.el
 
 #
 # zsh
 #
 
-PATHES := .zshrc .zsh
-DIR    := .
-
 .PHONY: link_zsh unlink_zsh
 link_zsh:
-	@echo Starting link zsh
-	@ for path in $(PATHES); do \
-		ln -sfnv $(PWD)/$(DIR)/$$path $(HOME)/$(DIR)/$$path; \
-	done
+	@ echo Starting link zsh
+	@ ln -sfnv $(PWD)/.zshrc $(HOME)/.zshrc
+	@ ln -sfnv $(PWD)/.zsh   $(HOME)/.zsh
 
-unlink_emacs:
+unlink_zsh:
 	@ echo Starting unlink zsh
-	@ for path in $(PATHES); do \
-		rm -fv $(HOME)/$(DIR)/$$path; \
-	done
+	@ rm -rfv $(HOME)/.zshrc
+	@ rm -rfv $(HOME)/.zsh
 
 #
 # tig
 #
 
-PATHES := .tigrc
-DIR    := .
-
 .PHONY: link_tig unlink_tig
 link_tig:
-	@echo Starting link tig
-	@ for path in $(PATHES); do \
-		ln -sfnv $(PWD)/$(DIR)/$$path $(HOME)/$(DIR)/$$path; \
-	done
+	@ echo Starting link tig
+	@ ln -sfnv $(PWD)/.tigrc $(HOME)/.tigrc
 
 unlink_tig:
 	@ echo Starting unlink tig
-	@ for path in $(PATHES); do \
-		rm -fv $(HOME)/$(DIR)/$$path; \
-	done
+	@ rm -rfv $(HOME)/.tigrc
+
+#
+# .config
+#
+
+.PHONY: link_dot_config unlink_dot_config
+link_dot_config:
+	@ echo Starting link .config
+	@ ln -sfnv $(PWD)/.config/alacritty     $(HOME)/.config/alacritty
+	@ ln -sfnv $(PWD)/.config/kitty         $(HOME)/.config/kitty
+	@ ln -sfnv $(PWD)/.config/git           $(HOME)/.config/git
+	@ ln -sfnv $(PWD)/.config/nvim          $(HOME)/.config/nvim
+	@ ln -sfnv $(PWD)/.config/starship.toml $(HOME)/.config/starship.toml
+
+unlink_dot_config:
+	@ echo Starting unlink .config
+	@ rm -rfv $(HOME)/.config/alacritty
+	@ rm -rfv $(HOME)/.config/kitty
+	@ rm -rfv $(HOME)/.config/git
+	@ rm -rfv $(HOME)/.config/nvim
+	@ rm -rfv $(HOME)/.config/starship.toml
