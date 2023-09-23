@@ -427,6 +427,10 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
      ,(concat "-javaagent:" lombok-path)
      ,(concat "-Xbootclasspath/a:" lombok-path))))
 
+(use-package zig-mode
+  :straight t
+  :mode (("\\.zig\\'" . zig-mode)))
+
 (use-package org
   :straight t
   :custom
