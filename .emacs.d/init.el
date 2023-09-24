@@ -444,6 +444,7 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
   :custom
   (system-time-locate nil)
   (org-startup-with-inline-images t)
+  (org-hide-leading-stars t)
   (org-ellipsis " ▼")
   (org-fontify-quote-and-verse-blocks t)
   (org-use-speed-commands t)
