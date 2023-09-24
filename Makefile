@@ -2,9 +2,17 @@
 
 all: link
 
-link: link_emacs link_zsh link_tig link_dot_config link_tmux
+link: link_emacs      \
+      link_zsh        \
+      link_tig        \
+      link_dot_config \
+      link_tmux
 
-unlink: unlink_emacs unlink_zsh unlink_tig unlink_dot_config unlink_tmux
+unlink: unlink_emacs      \
+        unlink_zsh        \
+        unlink_tig        \
+        unlink_dot_config \
+        unlink_tmux
 
 #
 # Emacs
