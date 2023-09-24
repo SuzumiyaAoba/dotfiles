@@ -2,9 +2,9 @@
 
 all: link
 
-link: link_emacs link_zsh link_tig link_dot_config
+link: link_emacs link_zsh link_tig link_dot_config link_tmux
 
-unlink: unlink_emacs unlink_zsh unlink_tig unlink_dot_config
+unlink: unlink_emacs unlink_zsh unlink_tig unlink_dot_config unlink_tmux
 
 #
 # Emacs
@@ -35,6 +35,18 @@ unlink_zsh:
 	@ echo Starting unlink zsh
 	@ rm -rfv $(HOME)/.zshrc
 	@ rm -rfv $(HOME)/.zsh
+
+#
+# tmux
+#
+.PHONY: link_tmux unlink_tmux
+link_tmux:
+	@ echo Starting link tmux
+	@ ln -sfnv $(PWD)/.tmux.conf $(PWD)/.tmux.conf
+
+unlink_tmux:
+	@ echo Starting unlink tmux
+	@ rm -rfv $(HOME)/.tmux.conf
 
 #
 # tig
@@ -69,3 +81,4 @@ unlink_dot_config:
 	@ rm -rfv $(HOME)/.config/git
 	@ rm -rfv $(HOME)/.config/nvim
 	@ rm -rfv $(HOME)/.config/starship.toml
+
