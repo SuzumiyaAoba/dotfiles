@@ -269,6 +269,7 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
   :hook ((prog-mode . highlight-indent-guides-mode)))
 
 (use-package dimmer
+  :disabled t
   :straight t
   :hook ((emacs-startup . dimmer-mode))
   :custom
