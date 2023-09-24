@@ -80,12 +80,17 @@
   :config
   (exec-path-from-shell-initialize))
 
-(use-package doom-themes
+;; (use-package doom-themes
+;;   :straight t
+;;   :config
+;;   (setq doom-themes-enable-bold t
+;; 	doom-themes-enable-italic t)
+;;   (load-theme 'doom-one t))
+
+(use-package one-themes
   :straight t
   :config
-  (setq doom-themes-enable-bold t
-	doom-themes-enable-italic t)
-  (load-theme 'doom-one t))
+  (load-theme 'one-light t))
 
 (use-package doom-modeline
   :straight t

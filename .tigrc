@@ -31,7 +31,7 @@ set ignore-case = true
 set diff-options = -m --first-parent
 
 # diff-highlight
-# set diff-highlight = true
+set diff-highlight = true
 
 # マウスを有効にする
 set mouse = true
