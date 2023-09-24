@@ -38,10 +38,12 @@
 
   (global-hl-line-mode)
 
-  (setq indent-tabs-mode nil
-	make-backup-files nil
+  (setq-default indent-tabs-mode nil)
+
+  (setq make-backup-files nil
 	auto-save-default nil
-	delete-by-moving-to-trash t)
+	delete-by-moving-to-trash t
+        vc-follow-symlinks t)
 
   (defalias 'yes-or-no-p 'y-or-n-p)
 
