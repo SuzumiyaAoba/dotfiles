@@ -77,6 +77,7 @@ bin=(
     "nvim"
     "emacs"
     "kitty"
+    "bun"
 )
 
 for filename in $bin; do
