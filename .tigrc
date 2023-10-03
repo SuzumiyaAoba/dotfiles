@@ -12,23 +12,18 @@ set blame-view-date-local = true
 
 ## pager
 set pager-view = line-number:yes,interval=1 text
-set pager-view-date-local = true
 
 set stage-view = line-number:yes,interval=1 text
-set stage-view-date-local = true
 
 set log-view   = line-number:yes,interval=1 text
-set log-view-date-local = true
 
 set blob-view  = line-number:yes,interval=1 text
-set blob-view-date-local = true
 
 set diff-view  = line-number:yes,interval=1 text:yes,commit-title-overflow=no
-set diff-view-date-local = true
 
 set blame-view-date-local = true
 
-set-tree-view-date-local = true
+set tree-view-date-local = true
 
 # 横分割
 set vertical-split = no
