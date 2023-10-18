@@ -361,7 +361,15 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
   :straight t
   :config
   (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode))
+  (global-treesit-auto-mode)
+
+  (let ((astro-recipe (make-treesit-auto-recipe
+                       :lang 'astro
+                       :ts-mode 'astro-ts-mode
+                       :url "https://github.com/virchau13/tree-sitter-astro"
+                       :revision "master"
+                       :source-dir "src")))
+    (add-to-list 'treesit-auto-recipe-list astro-recipe)))
 
 (use-package eglot
   :config
@@ -438,6 +446,9 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
 (use-package zig-mode
   :straight t
   :mode (("\\.zig\\'" . zig-mode)))
+
+(use-package astro-ts-mode
+  :straight t)
 
 (use-package org
   :straight t
