@@ -50,7 +50,7 @@ unlink_zsh:
 .PHONY: link_tmux unlink_tmux
 link_tmux:
 	@ echo Starting link tmux
-	@ ln -sfnv $(PWD)/.tmux.conf $(PWD)/.tmux.conf
+	@ ln -sfnv $(PWD)/.tmux.conf $(HOME)/.tmux.conf
 
 unlink_tmux:
 	@ echo Starting unlink tmux
