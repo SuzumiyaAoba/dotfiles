@@ -371,25 +371,18 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
                        :source-dir "src")))
     (add-to-list 'treesit-auto-recipe-list astro-recipe)))
 
-(use-package eglot
-  :config
-  (defun deno-project-p ()
-    "Predicate for determining if the open project is a Deno one."
-    (let ((p-root (cdr (project-current))))
-      (file-exists-p (concat p-root "deno.json"))))
+(use-package lsp-mode
+  :straight t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+         (lsp-mode . lsp-lens-mode)
+         (scala-mode . lsp))
+  :commands lsp)
 
-  (defun node-project-p ()
-    "Predicate for determining if the open project is a Node one."
-    (let ((p-root (cdr (project-current))))
-      (file-exists-p (concat p-root "package.json"))))
-
-  (defun es-server-program (_)
-    "Decide which server to use for ECMA Script based on project characteristics."
-    (cond ((deno-project-p) '("deno" "lsp" :initializationOptions (:enable t :lint t)))
-          ((node-project-p) '("typescript-language-server" "--stdio"))
-          (t                nil)))
-
-  (add-to-list 'eglot-server-programs '((js-mode typescript-mode) . es-server-program)))
+(use-package lsp-ui
+  :straight t
+  :commands lsp-ui-mode)
 
 ;;
 ;; modes
@@ -410,7 +403,6 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
   :straight t
   :mode (("\\.ts\\'" . typescript-mode)
 	 ("\\.tsx\\'" . tsx-ts-mode))
-  :hook ((typescript-mode . eglot-ensure))
   :custom
   (typescript-indent-level 2)
   (typescript-tsx-indent-offset 2)
@@ -427,27 +419,30 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
 (use-package groovy-mode
   :straight t)
 
-(use-package eglot-java
-  :straight t
-  :defer t
-  :hook ((java-ts-mode . eglot-java-mode))
-  :init
-  (setq lombok-path (expand-file-name "~/.m2/repository/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar"))
-  :custom
-  (eglot-java-eclipse-jdt-args
-   `(
-     "-noverify"
-     "-Xmx1G"
-     "-XX:+UseG1GC"
-     "-XX:+UseStringDeduplication"
-     ,(concat "-javaagent:" lombok-path)
-     ,(concat "-Xbootclasspath/a:" lombok-path))))
-
 (use-package zig-mode
   :straight t
   :mode (("\\.zig\\'" . zig-mode)))
 
 (use-package astro-ts-mode
+  :straight t)
+
+(use-package scala-mode
+  :straight t
+  :interpreter ("scala" . scala-mode))
+
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map)
+  ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+  (setq sbt:program-options '("-Dsbt.supershell=false")))
+
+(use-package lsp-metals
   :straight t)
 
 (use-package org
