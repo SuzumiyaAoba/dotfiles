@@ -49,6 +49,7 @@ path=(
   # rbenv
   $HOME/.rbenv/bin(N-/)
   $HOME/.rbenv/shims(N-/)
+  /run/current-system/sw/bin
 )
 
 ### Load basic config
@@ -60,10 +61,8 @@ source "$HOME/.zsh/keybindings.zsh"
 ### Load plugins
 source "$HOME/.zsh/plugins.zsh"
 
-### Load alias
-source "$HOME/.zsh/alias.zsh"
-
 bin=(
+    "nix"
     "starship"
     "fzf"
     "cargo"
@@ -86,3 +85,6 @@ for filename in $bin; do
 	source $FILE_PATH
     fi
 done
+
+### Load alias
+source "$HOME/.zsh/alias.zsh"
