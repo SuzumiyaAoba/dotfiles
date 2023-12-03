@@ -9,3 +9,5 @@
 (push '(menu-bar-lines . 0) default-frame-alist)
 ;; ツールバーを無効
 (push '(tool-bar-lines . 0) default-frame-alist)
+
+(add-to-list 'default-frame-alist '(font . "HackGen Console NF-14"))
