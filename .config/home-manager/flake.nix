@@ -17,7 +17,7 @@
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."aoba" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.personal = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         modules = [

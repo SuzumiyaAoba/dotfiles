@@ -16,13 +16,18 @@
     git
     curl
     wget
+    bat
     eza
     ripgrep
     delta
+    fd
     ghq
     tig
     fzf
     jq
+    bottom
+    xsv
+    csview
 
     cargo
 

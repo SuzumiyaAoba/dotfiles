@@ -1,5 +1,5 @@
 {
-  description = "Example Darwin system flake";
+  description = "Darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -29,13 +29,15 @@
     };
   in
   {
-    darwinConfigurations."SuzumiyaAobanoMacBook-Air" = nix-darwin.lib.darwinSystem {
-      modules = [
-        configuration
-        ./modules/apps.nix
-      ];
-    };
+    darwinConfigurations = {
+      personal = nix-darwin.lib.darwinSystem {
+        modules = [
+          configuration
+          ./modules/apps.nix
+        ];
+      };
 
-    darwinPackages = self.darwinConfigurations."SuzumiyaAobanoMacBook-Air".pkgs;
+      darwinPackages = self.darwinConfigurations.personal.pkgs;
+    };
   };
 }
