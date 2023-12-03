@@ -445,6 +445,9 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
 (use-package lsp-metals
   :straight t)
 
+(use-package nix-mode
+  :straight t)
+
 (use-package org
   :straight t
   :custom
