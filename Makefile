@@ -81,6 +81,8 @@ link_dot_config:
 	@ ln -sfnv $(PWD)/.config/git           $(HOME)/.config/git
 	@ ln -sfnv $(PWD)/.config/nvim          $(HOME)/.config/nvim
 	@ ln -sfnv $(PWD)/.config/starship.toml $(HOME)/.config/starship.toml
+	@ ln -sfnv $(PWD)/.config/home-manager  $(HOME)/.config/home-manager
+	@ ln -sfnv $(PWD)/.config/nix-darwin    $(HOME)/.config/nix-darwin
 
 unlink_dot_config:
 	@ echo Starting unlink .config
