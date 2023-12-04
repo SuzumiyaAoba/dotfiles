@@ -23,7 +23,6 @@
     casks = [
       "google-chrome"
       "firefox"
-      "brave-browser"
     ];
   };
 }
