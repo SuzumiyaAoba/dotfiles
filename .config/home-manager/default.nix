@@ -17,7 +17,6 @@
     hackgen-nf-font
 
     # commands
-    git
     curl
     wget
     bat
