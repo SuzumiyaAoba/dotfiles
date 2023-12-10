@@ -6,10 +6,17 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
-  home.packages = with pkgs; [
-    zsh
-    starship
+  imports = [
+    ./apps
+  ];
 
+  fonts.fontconfig.enable = true;
+
+  home.packages = with pkgs; [
+    # fonts
+    hackgen-nf-font
+
+    # commands
     git
     curl
     wget
@@ -30,6 +37,7 @@
 
     volta
 
+    # GUIs
     kitty
     raycast
     rectangle
@@ -44,7 +52,4 @@
   };
 
   programs.home-manager.enable = true;
-
-  programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacsGit;
 }
