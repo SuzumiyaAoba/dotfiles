@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.tig ];
+  home.packages = with pkgs; [
+    tig
+  ];
 
   home.file = {
     "${config.home.username}/.tigrc" = {

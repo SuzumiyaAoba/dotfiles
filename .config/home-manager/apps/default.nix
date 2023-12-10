@@ -9,5 +9,7 @@
     ./alacritty.nix
     ./wezterm.nix
     ./tig.nix
+
+    ./volta.nix
   ];
 }
