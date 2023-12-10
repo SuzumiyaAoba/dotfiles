@@ -23,7 +23,8 @@
   (setq native-comp-async-report-warnings-errors nil)
 
   (setq custom-file "~/.emacs.d/custom.el")
-  (load custom-file)
+  (if (file-exists-p "~/.emacs.d/custom.el")
+      (load custom-file))
 
   (setq scroll-margin 0
 	scroll-conservatively 100000
@@ -361,15 +362,7 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
   :straight t
   :config
   (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode)
-
-  (let ((astro-recipe (make-treesit-auto-recipe
-                       :lang 'astro
-                       :ts-mode 'astro-ts-mode
-                       :url "https://github.com/virchau13/tree-sitter-astro"
-                       :revision "master"
-                       :source-dir "src")))
-    (add-to-list 'treesit-auto-recipe-list astro-recipe)))
+  (global-treesit-auto-mode))
 
 (use-package lsp-mode
   :straight t
@@ -422,9 +415,6 @@ Use WIDTH, HEIGHT, CREP, and ZREP as described in
 (use-package zig-mode
   :straight t
   :mode (("\\.zig\\'" . zig-mode)))
-
-(use-package astro-ts-mode
-  :straight t)
 
 (use-package scala-mode
   :straight t

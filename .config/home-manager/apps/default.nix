@@ -8,5 +8,6 @@
     ./emacs.nix
     ./alacritty.nix
     ./wezterm.nix
+    ./tig.nix
   ];
 }

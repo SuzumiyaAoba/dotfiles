@@ -25,7 +25,6 @@
     delta
     fd
     ghq
-    tig
     fzf
     jq
     bottom
