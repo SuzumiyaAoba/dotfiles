@@ -13,8 +13,6 @@
 
       ignoreAllDups = true;
       ignoreSpace = true;
-
-      extended = true;
     };
 
     historySubstringSearch = {
@@ -43,7 +41,7 @@
       cat = "bat";
 
       # history
-      history = "history -i";
+      # history = "history -i";
 
       # nix
       update-personal = "home-manager switch --flake $(ghq root)/github.com/SuzumiyaAoba/dotfiles/.config/home-manager#personal";

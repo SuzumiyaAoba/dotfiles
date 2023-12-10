@@ -18,7 +18,7 @@ return {
     { key = '8', mods = 'LEADER', action = act.ActivateTab(7) },
     { key = '=', mods = 'LEADER', action = act.ResetFontSize },
     { key = '+', mods = 'LEADER', action = act.IncreaseFontSize },
-    { key = '-', mods = 'LEADER', action = act.DecreaseFontSize },
+    { key = '_', mods = 'LEADER', action = act.DecreaseFontSize },
     { key = 'F', mods = 'CTRL', action = act.Search 'CurrentSelectionOrEmptyString' },
     { key = 'K', mods = 'CTRL', action = act.ClearScrollback 'ScrollbackOnly' },
     { key = 'L', mods = 'CTRL', action = act.ShowDebugOverlay },

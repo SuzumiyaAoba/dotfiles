@@ -43,9 +43,6 @@
     vscode
   ];
 
-  home.file = {
-  };
-
   home.sessionVariables = {
     EDITOR = "emacs";
   };
